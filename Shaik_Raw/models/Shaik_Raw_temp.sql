@@ -17,7 +17,9 @@ validated_data as (
             IF( SAFE_CAST(coalesce(course,'0000') AS int64) is NOT NULL,
                 STRUCT('NA' as col, 'NA' as error),STRUCT("branch" as col,  CONCAT("dtypeCheckFailed [invalid string] [value: ",course,"]") as error)),    
             IF( SAFE_CAST(coalesce(Roll_No,'0000') AS int64) is NOT NULL,
-                STRUCT('NA' as col, 'NA' as error),STRUCT("Roll_No" as col,  CONCAT("dtypeCheckFailed [invalid string] [value: ",Roll_no,"]") as error)), 
+                STRUCT('NA' as col, 'NA' as error),STRUCT("Roll_No" as col,  CONCAT("dtypeCheckFailed [invalid string] [value: ",Roll_no,"]") as error)),
+            IF( SAFE_CAST(coalesce(Place,'0000') AS int64) is NOT NULL,
+                STRUCT('NA' as col, 'NA' as error),STRUCT("Place" as col,  CONCAT("dtypeCheckFailed [invalid string] [value: ",Place,"]") as error)),
             IF( SAFE_CAST(coalesce(year,'01/01/1001') AS DATE FORMAT 'DD/MM/YYYY') is NOT NULL,
                 STRUCT('NA' as col, 'NA' as error),STRUCT("year" as col,  CONCAT("dtypeCheckFailed [invalid date] [value: ",year,"]") as error)),
 	] as validation_reason
